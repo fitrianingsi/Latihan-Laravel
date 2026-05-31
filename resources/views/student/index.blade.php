@@ -1,13 +1,30 @@
 <x-app>
-    
+
     <x-slot name="title">Student</x-slot>
+
+    @session('succes')
+        <div class="alert alert-success ">
+            {{ session('succes') }}
+        </div>
+    @endsession
+
+
+    <a class="btn btn-primary mb-3" href="{{ route('student.create') }}" role="button">Create</a>
 
     <ul class="list-group">
         @foreach ($students as $student)
             <li class="list-group-item">
-                {{$loop->iteration}}. {{ $student->nim }}--{{ $student->name }}
+                {{ $loop->iteration }}. {{ $student->nim }}--{{ $student->name }}
+                <a class="btn btn-warning btn-sm " href="{{ route('student.edit', $student) }}" role="button">Edit</a>
+                <form action="{{ route('student.destroy', $student) }}" method="POST" class= "d-inline">
+                    @method('DELETE')
+                    @csrf
+
+                    <button type="Delete" class="btn btn-danger btn-sm" onclick=" return confirm('Anda yakin ingin menghapus data ini?')">Delete</button>
+                </form>
             </li>
         @endforeach
+
     </ul>
 
 </x-app>
