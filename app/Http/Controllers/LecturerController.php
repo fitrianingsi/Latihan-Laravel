@@ -22,7 +22,10 @@ class LecturerController extends Controller
      */
     public function create()
     {
-        //
+        return view('lecturer.create', [
+        'title' => 'Create Lecturer',
+
+        ]);
     }
 
     /**

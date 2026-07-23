@@ -1,33 +1,3 @@
 <div>
-    <!-- It is not the man who has too little, but the man who craves more, that is poor. - Seneca -->
-</div><x-app>
-
-    <x-slot name="title">Lecturer</x-slot>
-
-    @session('succes')
-        <div class="alert alert-success ">
-            {{ session('succes') }}
-        </div>
-    @endsession
-
-
-    <a class="btn btn-primary mb-3" href="{{ route('lecturer.create') }}" role="button">Create</a>
-
-    <ul class="list-group">
-        @foreach ($lecturers as $lecturer)
-            <li class="list-group-item">
-                {{ $loop->iteration }}. {{ $lecturer->name }}--{{ $lecturer->departmen->name }}
-                <a class="btn btn-warning btn-sm " href="{{ route('lecturer.edit', $lecturer) }}" role="button">Edit</a>
-                <form action="{{ route('lecturer.destroy', $lecturer) }}" method="POST" class= "d-inline">
-                    @method('DELETE')
-                    @csrf
-
-                    <button type="Delete" class="btn btn-danger btn-sm" onclick=" return confirm('Anda yakin ingin menghapus data ini?')">Delete</button>
-                </form>
-            </li>
-        @endforeach
-
-    </ul>
-
-</x-app>
-
+    <!-- Knowing is not enough; we must apply. Being willing is not enough; we must do. - Leonardo da Vinci -->
+</div>

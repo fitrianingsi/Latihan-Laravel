@@ -1,3 +1,35 @@
-<div>
-    <!-- The best way to take care of the future is to take care of the present moment. - Thich Nhat Hanh -->
-</div>
+<x-app>
+
+    <x-slot:title>Lecturer</x-slot>
+
+ 
+    <form method="POST" action="{{ route('lecturer.store') }}">
+        @csrf
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label> 
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
+                value="{{ old('name') }}">
+
+            @error('name')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="departmen_id" class="form-label">DEPARTMEN_ID</label>
+            <input type="text" class="form-control @error('departmen_id') is-invalid @enderror" id="departmen_id" name="departmen_id"
+                value="{{ old('departmen_id') }}">
+
+            @error('departmen_id')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <a class="btn btn-warning" href="{{ route('lecturer.index') }}" role="button">Cencel</a>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+</x-app>
